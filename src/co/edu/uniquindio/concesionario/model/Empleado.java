@@ -786,7 +786,7 @@ public class Empleado extends Persona implements CrearVehiculo, RealizarTransacc
 			}
 		}
 		else {
-			throw new TransaccionException("El vehiculo a alquiler no se encuentra registrado");
+			throw new TransaccionException("El vehiculo a alquilar no se encuentra registrado");
 		}
 		return mensaje;
 	}
