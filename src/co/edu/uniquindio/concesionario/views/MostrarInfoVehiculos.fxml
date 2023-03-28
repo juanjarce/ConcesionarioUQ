@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="552.0" prefWidth="1266.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.concesionario.controllers.MostrarInfoVehiculosController">
+   <top>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Registro de Vehiculos" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Separator prefHeight="8.0" prefWidth="770.0" />
+         </children>
+      </GridPane>
+   </top>
+   <left>
+      <Separator orientation="VERTICAL" prefHeight="514.0" prefWidth="11.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <Separator orientation="VERTICAL" prefHeight="514.0" prefWidth="10.0" BorderPane.alignment="CENTER" />
+   </right>
+   <bottom>
+      <Separator prefHeight="11.0" prefWidth="770.0" BorderPane.alignment="CENTER" />
+   </bottom>
+   <center>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Imagen Vehiculo:" />
+            <Label text="Codigo:" GridPane.columnIndex="2" />
+            <Label text="Condicion:" GridPane.columnIndex="4" />
+            <Label text="Modelo:" GridPane.columnIndex="6" />
+            <Label text="Transmision:" GridPane.rowIndex="1" />
+            <Label text="Velocidad Maxima:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label text="Cilindraje:" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <Label text="Numero de Pasajeros:" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+            <Label text="Numero de Puertas" GridPane.rowIndex="2" />
+            <Label text="Capacidad del Maletero:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Label text="Aire acondicionado:" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+            <Label text="Camara de reversa:" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+            <Label text="Velocidad Crucero:" GridPane.rowIndex="3" />
+            <Label text="Numero de bolsas de aire:" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Label text="ABS:" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+            <Label text="Tipo de Vehiculo:" GridPane.rowIndex="4" />
+            <Label text="Categoria del Vehiculo:" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Label fx:id="autonomiaLabel" text="Autonomia:" GridPane.rowIndex="5" />
+            <Label fx:id="tiempoCargaLabel" text="Tiempo de Carga:" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <Label fx:id="enchufableLabel" text="Enchufable:" GridPane.rowIndex="6" />
+            <Label fx:id="tipoHibridoLabel" text="Tipo de Hibrido:" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <Label fx:id="capacidadCargaLabel" text="Capacidad de Carga:" GridPane.rowIndex="7" />
+            <Label fx:id="numeroEjesLabel" text="Numero de Ejes:" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+            <Label fx:id="numeroSalidasEmergenciaLabel" text="Numero Salidas Emergencia:" GridPane.columnIndex="4" GridPane.rowIndex="7" />
+            <Label fx:id="sensorColisionLabel" text="Sensor de Colisión:" GridPane.columnIndex="6" GridPane.rowIndex="7" />
+            <Label fx:id="sensorTraficoCruzadoLabel" text="Sensor Tráfico Cruzado:" GridPane.rowIndex="8" />
+            <Label fx:id="permanenciaCarrilLabel" text="Permanencia de Carril:" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+            <Label fx:id="is4x4Label" text="4x4:" GridPane.columnIndex="4" GridPane.rowIndex="8" />
+            <Label fx:id="capacidadCajaCargasLabel" text="Capacidad Caja de Cargas:" GridPane.columnIndex="6" GridPane.rowIndex="8" />
+            <Label fx:id="caballosFuerzaLabel" text="Caballos de Fuerza:" GridPane.rowIndex="9" />
+            <Label fx:id="segundos100Label" text="Segundos para alcanzar 100km/h:" GridPane.columnIndex="2" GridPane.rowIndex="9">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <TextField fx:id="inputCodigo" GridPane.columnIndex="3" />
+            <TextField fx:id="inputModelo" GridPane.columnIndex="7" />
+            <TextField fx:id="inputVelocidadMaxima" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <TextField fx:id="inputCilindraje" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+            <TextField fx:id="inputNumeroPasajeros" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+            <TextField fx:id="inputNumeroPuertas" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="inputCapacidadMaletero" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <TextField fx:id="inputNumeroBolsasAire" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <TextField fx:id="inputAutonomia" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="inputTiempoCarga" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <TextField fx:id="inputCapacidadCarga" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <TextField fx:id="inputNumeroEjes" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+            <TextField fx:id="inputNumeroSalidasEmergencia" GridPane.columnIndex="5" GridPane.rowIndex="7" />
+            <TextField fx:id="inputCapacidadCajaCargas" GridPane.columnIndex="7" GridPane.rowIndex="8" />
+            <TextField fx:id="inputCaballosFuerza" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <TextField fx:id="inputSegundos100" GridPane.columnIndex="3" GridPane.rowIndex="9" />
+            <Button mnemonicParsing="false" onAction="#volverButton" text="VOLVER" GridPane.columnIndex="7" GridPane.rowIndex="10" />
+            <Label text="Marca:" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+            <TextField fx:id="inputMarca" GridPane.columnIndex="7" GridPane.rowIndex="3" />
+            <Hyperlink fx:id="hiperLinkImagenVehiculo" onAction="#abrirImagenVehiculo" text="Acceso imagen del vehiculo" GridPane.columnIndex="1" />
+            <TextField fx:id="inputCondicion" GridPane.columnIndex="5" />
+            <TextField fx:id="inputTransmision" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="inputAire" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+            <TextField fx:id="inputCamaraReversa" GridPane.columnIndex="7" GridPane.rowIndex="2" />
+            <TextField fx:id="inputVelocidadCrucero" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="inputAbs" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+            <TextField fx:id="inputTipoVehiculo" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="inputCategoriaVehiculo" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <TextField fx:id="inputEnchufable" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <TextField fx:id="inputTipoHibrido" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+            <TextField fx:id="inputSensorColision" GridPane.columnIndex="7" GridPane.rowIndex="7" />
+            <TextField fx:id="inputSensorTraficoCruzado" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <TextField fx:id="inputPermanenciaCarril" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+            <TextField fx:id="input4x4" GridPane.columnIndex="5" GridPane.rowIndex="8" />
+            <Button mnemonicParsing="false" onAction="#mostrarInformacion" text="MOSTRAR INFORMACION" GridPane.rowIndex="10" />
+         </children>
+      </GridPane>
+   </center>
+</BorderPane>

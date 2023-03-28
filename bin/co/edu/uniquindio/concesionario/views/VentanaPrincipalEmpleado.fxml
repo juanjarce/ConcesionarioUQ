@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.concesionario.controllers.VentanaPrincipalEmpleadoController">
+   <right>
+      <AnchorPane prefHeight="429.0" prefWidth="720.0" BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="720.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="REGISTRO">
+                  <items>
+                        <MenuItem mnemonicParsing="false" onAction="#registrarVehiculo" text="REGISTRO VEHICULOS" />
+                        <MenuItem mnemonicParsing="false" onAction="#registrarCliente" text="REGISTRO CLIENTES" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="TRANSACCIONES">
+                  <items>
+                        <MenuItem mnemonicParsing="false" onAction="#venderVehiculo" text="VENTA VEHICULOS" />
+                        <MenuItem mnemonicParsing="false" onAction="#comprarVehiculo" text="COMPRA VEHICULO" />
+                    <MenuItem mnemonicParsing="false" onAction="#alquilarVehiculo" text="ALQUILER VEHICULO" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="REPORTES">
+                  <items>
+                        <MenuItem mnemonicParsing="false" onAction="#mostrarReportesDeNegocio" text="REPORTE DE NEGOCIOS" />
+                  </items>
+                </Menu>
+                  <Menu mnemonicParsing="false" onAction="#cerrarSesion" text="CERRAR SESION">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="CERRAR SESION" />
+                    </items>
+                  </Menu>
+              </menus>
+            </MenuBar>
+         </children>
+      </AnchorPane>
+   </right>
+</BorderPane>
