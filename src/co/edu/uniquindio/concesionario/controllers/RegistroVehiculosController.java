@@ -392,7 +392,7 @@ public class RegistroVehiculosController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    	ObservableList<String> listCondicion = FXCollections.observableArrayList("EXCELENTE", "NORMAL", "MALO");
+    	ObservableList<String> listCondicion = FXCollections.observableArrayList("NUEVO", "USADO");
     	comboCondicion.setItems(listCondicion);
     	ObservableList<String> listTransmision = FXCollections.observableArrayList("MANUAL", "AUTOMATICA");
     	comboTransmicion.setItems(listTransmision);
