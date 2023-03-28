@@ -259,7 +259,7 @@ public abstract class Vehiculo {
 	}
 
 	/**
-	 * metodo para cmabiar la disponibilidad de un vehiculo despues de una transaccion
+	 * metodo para cambiar la disponibilidad de un vehiculo despues de una transaccion
 	 */
 	public void cambiarDisponibilidadVehiculoPorTransaccion() {
 		if(getDisponibleTransaccion() == false) {
