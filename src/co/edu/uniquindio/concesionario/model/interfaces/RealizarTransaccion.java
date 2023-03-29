@@ -1,6 +1,9 @@
-package co.edu.uniquindio.concesionario.model;
+package co.edu.uniquindio.concesionario.model.interfaces;
 
 import co.edu.uniquindio.concesionario.exceptions.TransaccionException;
+import co.edu.uniquindio.concesionario.model.Cliente;
+import co.edu.uniquindio.concesionario.model.Empleado;
+import co.edu.uniquindio.concesionario.model.Vehiculo;
 
 public interface RealizarTransaccion {
 

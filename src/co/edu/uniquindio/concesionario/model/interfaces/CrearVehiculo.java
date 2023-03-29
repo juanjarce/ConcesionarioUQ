@@ -1,6 +1,8 @@
-package co.edu.uniquindio.concesionario.model;
+package co.edu.uniquindio.concesionario.model.interfaces;
 
 import co.edu.uniquindio.concesionario.exceptions.VehiculoRegistradoException;
+import co.edu.uniquindio.concesionario.model.CategoriaVehiculo;
+import co.edu.uniquindio.concesionario.model.TipoVehiculo;
 
 public interface CrearVehiculo {
 

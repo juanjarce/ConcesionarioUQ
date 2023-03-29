@@ -8,6 +8,8 @@ import co.edu.uniquindio.concesionario.exceptions.ContraseniaException;
 import co.edu.uniquindio.concesionario.exceptions.CrearClienteException;
 import co.edu.uniquindio.concesionario.exceptions.TransaccionException;
 import co.edu.uniquindio.concesionario.exceptions.VehiculoRegistradoException;
+import co.edu.uniquindio.concesionario.model.interfaces.CrearVehiculo;
+import co.edu.uniquindio.concesionario.model.interfaces.RealizarTransaccion;
 import co.edu.uniquindio.concesionario.exceptions.VehiculoNoRegistradoException;
 
 public class Empleado extends Persona implements CrearVehiculo, RealizarTransaccion{
