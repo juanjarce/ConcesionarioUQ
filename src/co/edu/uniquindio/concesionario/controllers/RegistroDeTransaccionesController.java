@@ -3,17 +3,17 @@ package co.edu.uniquindio.concesionario.controllers;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import co.edu.uniquindio.concesionario.model.Administrativo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class RegistroDeTransaccionesController {
 
 	private VentanaPrincipalAdministrativoController ventanaPrincipalAdministrativoController;
 	private Stage stage;
-	private Administrativo miAdministrativo;
 	private String fechaInicio;
 	private String fechaFinal;
 
@@ -25,8 +25,10 @@ public class RegistroDeTransaccionesController {
 
     @FXML
     void generarReporte(ActionEvent event) {
-    	TablaRegistroDeTransacciones newFrame = new TablaRegistroDeTransacciones(miAdministrativo, fechaInicio, fechaFinal);
-    	newFrame.setVisible(true);
+    	if(validarDatos(this.fechaInicio, this.fechaFinal)) {
+        	TablaRegistroDeTransacciones newFrame = new TablaRegistroDeTransacciones(fechaInicio, fechaFinal);
+        	newFrame.setVisible(true);
+    	}
     }
 
     @FXML
@@ -47,11 +49,36 @@ public class RegistroDeTransaccionesController {
     	stage.close();
     }
     
-    public void init(Administrativo miAdministrativo, Stage stage, VentanaPrincipalAdministrativoController ventanaPrincipalAdministrativoController) {
+    public void init(Stage stage, VentanaPrincipalAdministrativoController ventanaPrincipalAdministrativoController) {
 		// TODO Auto-generated method stub
 		this.ventanaPrincipalAdministrativoController = ventanaPrincipalAdministrativoController;
 		this.stage = stage;
-		this.miAdministrativo = miAdministrativo;
+	}
+
+	public void mostrarMensaje(String titulo, String header, String contenido, AlertType alertType) {
+
+    	Alert alert = new Alert(alertType);
+    	alert.setTitle(titulo);
+    	alert.setHeaderText(header);
+    	alert.setContentText(contenido);
+    	alert.showAndWait();
+	}
+
+    private boolean validarDatos(String fechaInicio, String fechaFinal) {
+		String mensaje = "";
+
+		if(fechaInicio == null || fechaInicio.equals(""))
+			mensaje += "La fecha de inicio es invalida \n";
+
+		if(fechaFinal == null || fechaFinal.equals(""))
+			mensaje += "La fecha final es invalida \n";
+
+		if(mensaje.equals("")){
+			return true;
+		}else{
+			mostrarMensaje("Información Empleado", "Datos invalidos", mensaje, AlertType.WARNING);
+			return false;
+		}
 	}
 
 }

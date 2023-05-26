@@ -31,9 +31,9 @@ public class TablaRegistroDeTransacciones extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TablaRegistroDeTransacciones(Administrativo miAdministrativo, String fechaInicio, String fechaFinal) {
+	public TablaRegistroDeTransacciones(String fechaInicio, String fechaFinal) {
 	
-		this.miAdministrativo = miAdministrativo;
+		this.miAdministrativo = ModelFactoryController.getInstance().getMiAdministrativo();
 		this.fechaInicio = fechaInicio;
 		this.fechaFinal = fechaFinal;
 		

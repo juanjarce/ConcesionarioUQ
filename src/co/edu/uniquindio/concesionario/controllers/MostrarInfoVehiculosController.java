@@ -1,9 +1,6 @@
 package co.edu.uniquindio.concesionario.controllers;
 
-import java.awt.Desktop;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 
 import co.edu.uniquindio.concesionario.model.Bus;
 import co.edu.uniquindio.concesionario.model.Camion;
@@ -16,7 +13,9 @@ import co.edu.uniquindio.concesionario.model.TipoVehiculo;
 import co.edu.uniquindio.concesionario.model.Vehiculo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Hyperlink;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -26,6 +25,7 @@ public class MostrarInfoVehiculosController {
 	private RegistroVehiculosController registroVehiculosController;
 	private Stage stage;
 	private Vehiculo vehiculo;
+	
     @FXML
     private Label autonomiaLabel;
 
@@ -120,9 +120,6 @@ public class MostrarInfoVehiculosController {
     private TextField inputMarca;
 
     @FXML
-    private Hyperlink hiperLinkImagenVehiculo;
-
-    @FXML
     private TextField inputCondicion;
 
     @FXML
@@ -165,21 +162,20 @@ public class MostrarInfoVehiculosController {
     private TextField input4x4;
 
     @FXML
-    void abrirImagenVehiculo(ActionEvent event) {
-    	try {
-			Desktop.getDesktop().browse(new URI(vehiculo.getDireccionImagen()));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (URISyntaxException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
+    private Label frenosAireLabel;
+
+    @FXML
+    private Label tipoCamionLabel;
+
+    @FXML
+    private TextField inputFrenosAire;
+
+    @FXML
+    private TextField inputTipoCamion;
 
     @FXML
     void mostrarInformacion(ActionEvent event) {
-    	hiperLinkImagenVehiculo.setText(vehiculo.getDireccionImagen()); inputCodigo.setText(vehiculo.getCodigo()); inputCondicion.setText(vehiculo.getCondicion()); inputModelo.setText(vehiculo.getModelo().toString());
+    	inputCodigo.setText(vehiculo.getCodigo()); inputCondicion.setText(vehiculo.getCondicion()); inputModelo.setText(vehiculo.getModelo().toString());
     	inputTransmision.setText(vehiculo.getTransmicion()); inputVelocidadMaxima.setText(vehiculo.getVelocidadMaxima()+""+"km/h"); inputCilindraje.setText(vehiculo.getCilindraje()+" "+"cm^3"); inputNumeroPasajeros.setText(vehiculo.getNumeroPasajeros().toString());
     	inputNumeroPuertas.setText(vehiculo.getNumeroPuertas().toString()); inputCapacidadMaletero.setText(vehiculo.getCapacidadMaletero()+" "+"kg"); inputAire.setText(String.valueOf(vehiculo.isAireAcondicionado())); inputCamaraReversa.setText(String.valueOf(vehiculo.isCamaraReversa())); 
     	inputVelocidadCrucero.setText(String.valueOf(vehiculo.isVelocidadCrucero())); inputNumeroBolsasAire.setText(vehiculo.getNumeroBolsasDeAire().toString()); inputAbs.setText(String.valueOf(vehiculo.isABS())); inputMarca.setText(vehiculo.getMarca());
@@ -196,7 +192,7 @@ public class MostrarInfoVehiculosController {
     	}
     	capacidadCargaLabel.setVisible(false); inputCapacidadCarga.setVisible(false); numeroEjesLabel.setVisible(false); inputNumeroEjes.setVisible(false); numeroSalidasEmergenciaLabel.setVisible(false); inputNumeroSalidasEmergencia.setVisible(false); sensorColisionLabel.setVisible(false); inputSensorColision.setVisible(false);
     	sensorTraficoCruzadoLabel.setVisible(false); inputSensorTraficoCruzado.setVisible(false); permanenciaCarrilLabel.setVisible(false); inputPermanenciaCarril.setVisible(false); is4x4Label.setVisible(false); input4x4.setVisible(false); capacidadCajaCargasLabel.setVisible(false); inputCapacidadCajaCargas.setVisible(false);
-    	caballosFuerzaLabel.setVisible(false); inputCaballosFuerza.setVisible(false); segundos100Label.setVisible(false); inputSegundos100.setVisible(false);
+    	caballosFuerzaLabel.setVisible(false); inputCaballosFuerza.setVisible(false); segundos100Label.setVisible(false); inputSegundos100.setVisible(false); frenosAireLabel.setVisible(false); inputFrenosAire.setVisible(false); tipoCamionLabel.setVisible(false); inputTipoCamion.setVisible(false);
     	if(vehiculo.getCategoriaVehiculo().equals(CategoriaVehiculo.BUS)) {
     		Bus bus = (Bus) vehiculo;
     		 numeroEjesLabel.setVisible(true); inputNumeroEjes.setVisible(true); numeroSalidasEmergenciaLabel.setVisible(true); inputNumeroSalidasEmergencia.setVisible(true);
@@ -204,8 +200,8 @@ public class MostrarInfoVehiculosController {
     	}
     	if(vehiculo.getCategoriaVehiculo().equals(CategoriaVehiculo.CAMION)) {
     		Camion camion = (Camion) vehiculo;
-    		capacidadCargaLabel.setVisible(true); inputCapacidadCarga.setVisible(true); numeroEjesLabel.setVisible(true); inputNumeroEjes.setVisible(true); numeroSalidasEmergenciaLabel.setVisible(true); inputNumeroSalidasEmergencia.setVisible(true);
-    		inputCapacidadCarga.setText(camion.getCapacidadCarga().toString()); inputNumeroEjes.setText(camion.getNumeroEjes().toString()); inputNumeroSalidasEmergencia.setText(camion.getNumeroSalidasEmergencia().toString());
+    		capacidadCargaLabel.setVisible(true); inputCapacidadCarga.setVisible(true); numeroEjesLabel.setVisible(true); inputNumeroEjes.setVisible(true); numeroSalidasEmergenciaLabel.setVisible(true); inputNumeroSalidasEmergencia.setVisible(true); frenosAireLabel.setVisible(true); inputFrenosAire.setVisible(true); tipoCamionLabel.setVisible(true); inputTipoCamion.setVisible(true);
+    		inputCapacidadCarga.setText(camion.getCapacidadCarga().toString()+" "+"kg"); inputNumeroEjes.setText(camion.getNumeroEjes().toString()); inputNumeroSalidasEmergencia.setText(camion.getNumeroSalidasEmergencia().toString()); inputFrenosAire.setText(camion.getFrenosAire().toString()); inputTipoCamion.setText(camion.getTipoCamion().toString());
     	}
     	if(vehiculo.getCategoriaVehiculo().equals(CategoriaVehiculo.SEDAN)) {
     		Sedan sedan = (Sedan) vehiculo;
@@ -230,16 +226,33 @@ public class MostrarInfoVehiculosController {
     }
 
     @FXML
+    void mostrarImagenes(ActionEvent event) throws IOException {
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/concesionario/views/ImagenesVehiculos.fxml"));
+    	Parent root = loader.load();
+    	ImagenesVehiculosController controller = loader.getController();
+    	Scene scene = new Scene(root);
+    	Stage stage = new Stage();
+    	stage.setScene(scene);
+    	controller.init(stage, this);
+    	stage.show();
+    	this.stage.close();
+    }
+    
+    @FXML
     void volverButton(ActionEvent event) {
     	registroVehiculosController.show();
     	stage.close();
     }
 
-	public void init(Vehiculo vehiculo, Stage stage, RegistroVehiculosController registroVehiculosController) {
+	public void init(Stage stage, RegistroVehiculosController registroVehiculosController) {
 		// TODO Auto-generated method stub
 		this.registroVehiculosController = registroVehiculosController;
 		this.stage = stage;
-		this.vehiculo = vehiculo;
+		this.vehiculo = ModelFactoryController.getInstance().getVehiculo();
+	}
+
+	public void show() {
+		stage.show();
 	}
 
 }

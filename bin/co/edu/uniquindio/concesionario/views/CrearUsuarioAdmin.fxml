@@ -99,7 +99,7 @@
             <PasswordField fx:id="inputContrasenia" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <TextField fx:id="inputCorreo" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <TextField fx:id="inputRespuestaSeguridad" promptText="fecha nacimiento (formato dd.mm.aa)" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <ComboBox fx:id="comboCargo" prefHeight="25.0" prefWidth="320.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <ComboBox fx:id="comboCargo" prefHeight="25.0" prefWidth="326.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
          </children>
       </GridPane>
    </center>

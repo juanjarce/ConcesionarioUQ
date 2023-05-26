@@ -1,5 +1,6 @@
 package co.edu.uniquindio.concesionario.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -10,8 +11,11 @@ import co.edu.uniquindio.concesionario.exceptions.CrearAdministrativoException;
 import co.edu.uniquindio.concesionario.exceptions.UsuarioException;
 
 
-public class Concesionario {
-
+public class Concesionario implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	
+	//Atributos de la clase Concesionario
 	private String nombre;
 	private String nit;
 	private String direccion;
@@ -165,7 +169,7 @@ public class Concesionario {
 		/**
 	 * Metodo para encontrar posicion del usuario en el login
 	 */
-	public int entonctrarPosUsuario(String usuario) {
+	public int encontrarPosUsuario(String usuario) {
 		int pos=-1;
 		for(int i=0; i<listaEmpleados.size(); i++) {
 			if(listaEmpleados.get(i).getUsuario().equals(usuario)) {
@@ -233,7 +237,7 @@ public class Concesionario {
 			}
 		}
 		else {
-			throw new CrearAdministrativoException("El administrativo ya se encuentra registradio");
+			throw new CrearAdministrativoException("El administrativo ya se encuentra registrado");
 		}
 		return mensaje;
 	}

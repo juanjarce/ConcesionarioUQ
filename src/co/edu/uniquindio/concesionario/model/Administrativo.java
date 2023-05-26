@@ -8,6 +8,9 @@ import co.edu.uniquindio.concesionario.exceptions.EmpleadoNoRegistradoException;
 
 public class Administrativo extends Empleado{
 
+	private static final long serialVersionUID = 1L;
+	
+	//Atributos de la clase Administrativo
 	private Cargo cargo;
 	
 	//------------------------------------------------------------------------------------------------------------------------------------------------
@@ -37,7 +40,7 @@ public class Administrativo extends Empleado{
 	//Constructores definidos para pruebas unitarias
 
 	/**
-	 * constructor para pruebas
+	 *  Metodo Constructor para pruebas unitarias 1 de la clase Administrativo
 	 * @param concesionario
 	 */
 	public Administrativo(Concesionario concesionario) {
@@ -151,7 +154,7 @@ public class Administrativo extends Empleado{
 		String mensaje;
 		Empleado empleado = getConcesionario().obtenerEmpleado(identificacionEmpleado);
 		if(empleado != null) {
-			if(empleado.getEstado()=="ACTIVO") {
+			if(empleado.getEstado().equals("ACTIVO")) {
 				empleado.setEstado("BLOQUEADO");
 				mensaje = "Empleado bloqueado Exitosamente";
 			}
@@ -159,6 +162,26 @@ public class Administrativo extends Empleado{
 				empleado.setEstado("ACTIVO");
 				mensaje = "Empleado desbloqueado Exitosamente";
 			}
+		}
+		else {
+			throw new EmpleadoNoRegistradoException();
+		}
+		return mensaje;
+	}
+	
+	/**
+	 * Metodo para actualizar la direccion de correo electronico de un empleado
+	 * @param identificacion
+	 * @param nuevaDireccionCorreo
+	 * @return
+	 * @throws EmpleadoNoRegistradoException
+	 */
+	public String actualizarCorreoEmpleado(String identificacion, String nuevaDireccionCorreo) throws EmpleadoNoRegistradoException {
+		String mensaje;
+		Empleado empleado = getConcesionario().obtenerEmpleado(identificacion);
+		if(empleado != null) {
+			empleado.setCorreo(nuevaDireccionCorreo);
+			mensaje="El correo electronico fue actualizado exitosamente con direccion:"+"\n"+nuevaDireccionCorreo;
 		}
 		else {
 			throw new EmpleadoNoRegistradoException();

@@ -1,10 +1,17 @@
 package co.edu.uniquindio.concesionario.model;
 
+import java.util.ArrayList;
+
 public class Camion extends Vehiculo{
 
+	private static final long serialVersionUID = 1L;
+	
+	//Atributos de la clase Camion
 	private Double capacidadCarga;
 	private Integer numeroEjes;
 	private Integer numeroSalidasEmergencia;
+	private Boolean frenosAire;
+	private TipoCamion tipoCamion;
 	
 	//------------------------------------------------------------------------------------------------------------------------------------------------
 	//Constructores definidos de la clase
@@ -33,12 +40,13 @@ public class Camion extends Vehiculo{
 	 * @param abs
 	 * @param categoriaVehiculo
 	 */
-	public Camion(String direccionImagen, String codigo, String marca, String condicion, Integer modelo, String transmicion, String velocidadMaxima,
-			String cilindraje, Integer numeroPasajeros, Integer numeroPuertas, Double capacidadMaletero,
+	public Camion(ArrayList<String> listaImagenes, String codigo, String marca, String condicion, Integer modelo, String transmicion, Double velocidadMaxima,
+			Double cilindraje, Integer numeroPasajeros, Integer numeroPuertas, Double capacidadMaletero,
 			boolean aireAcondicionado, boolean camaraReversa, boolean velocidadCrucero, Integer numeroBolsasDeAire,
 			boolean aBS, TipoVehiculo tipoVehiculo, CategoriaVehiculo categoriaVehiculo, Integer electrico_autonomia,
-			Integer electrico_tiempoCarga, boolean hibrido_isEnchufable, String tipoHibrido, Double capacidadCarga, Integer numeroEjes, Integer numeroSalidasEmergencia) {
-		super(direccionImagen, codigo, marca, condicion, modelo, transmicion, velocidadMaxima, cilindraje, numeroPasajeros, numeroPuertas,
+			Integer electrico_tiempoCarga, boolean hibrido_isEnchufable, String tipoHibrido, Double capacidadCarga, Integer numeroEjes, Integer numeroSalidasEmergencia,
+			boolean frenosAire, TipoCamion tipoCamion) {
+		super(listaImagenes, codigo, marca, condicion, modelo, transmicion, velocidadMaxima, cilindraje, numeroPasajeros, numeroPuertas,
 				capacidadMaletero, aireAcondicionado, camaraReversa, velocidadCrucero, numeroBolsasDeAire, aBS, tipoVehiculo,
 				categoriaVehiculo, electrico_autonomia, electrico_tiempoCarga, hibrido_isEnchufable, tipoHibrido);
 		// TODO Auto-generated constructor stub
@@ -46,6 +54,8 @@ public class Camion extends Vehiculo{
 		this.capacidadCarga = capacidadCarga;
 		this.numeroEjes = numeroEjes;
 		this.numeroSalidasEmergencia = numeroSalidasEmergencia;
+		this.frenosAire = frenosAire;
+		this.tipoCamion = tipoCamion;
 	}
 
 	//------------------------------------------------------------------------------------------------------------------------------------------------
@@ -80,6 +90,18 @@ public class Camion extends Vehiculo{
 	}
 	public void setNumeroSalidasEmergencia(Integer numeroSalidasEmergencia) {
 		this.numeroSalidasEmergencia = numeroSalidasEmergencia;
+	}
+	public Boolean getFrenosAire() {
+		return frenosAire;
+	}
+	public void setFrenosAire(Boolean frenosAire) {
+		this.frenosAire = frenosAire;
+	}
+	public TipoCamion getTipoCamion() {
+		return tipoCamion;
+	}
+	public void setTipoCamion(TipoCamion tipoCamion) {
+		this.tipoCamion = tipoCamion;
 	}
 
 }

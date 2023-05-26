@@ -1,7 +1,12 @@
 package co.edu.uniquindio.concesionario.model;
 
-public abstract class Transaccion {
+import java.io.Serializable;
 
+public abstract class Transaccion implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+	
+	//Atributos y roles de la clase Transaccion
 	private Double total;
 	private Vehiculo vehiculo;
 	private Empleado empleadoTransaccion;

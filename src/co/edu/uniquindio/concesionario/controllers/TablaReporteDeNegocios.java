@@ -10,7 +10,6 @@ import javax.swing.table.DefaultTableModel;
 
 import co.edu.uniquindio.concesionario.model.Alquiler;
 import co.edu.uniquindio.concesionario.model.Compra;
-import co.edu.uniquindio.concesionario.model.Concesionario;
 import co.edu.uniquindio.concesionario.model.Empleado;
 import co.edu.uniquindio.concesionario.model.Transaccion;
 import co.edu.uniquindio.concesionario.model.Venta;

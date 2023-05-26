@@ -1,4 +1,4 @@
-package co.edu.uniquindio.concesionario.model;
+package co.edu.uniquindio.concesionario.model.email;
 
 import java.util.Properties;
 import java.util.logging.Level;

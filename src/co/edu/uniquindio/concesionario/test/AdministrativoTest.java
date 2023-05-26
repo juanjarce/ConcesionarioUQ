@@ -8,10 +8,12 @@ import java.util.List;
 
 import org.junit.Test;
 
+import co.edu.uniquindio.concesionario.exceptions.CrearAdministrativoException;
 import co.edu.uniquindio.concesionario.exceptions.CrearEmpleadoException;
 import co.edu.uniquindio.concesionario.exceptions.EmpleadoNoRegistradoException;
 import co.edu.uniquindio.concesionario.model.Administrativo;
 import co.edu.uniquindio.concesionario.model.Alquiler;
+import co.edu.uniquindio.concesionario.model.Cargo;
 import co.edu.uniquindio.concesionario.model.Compra;
 import co.edu.uniquindio.concesionario.model.Concesionario;
 import co.edu.uniquindio.concesionario.model.Empleado;
@@ -198,4 +200,46 @@ public class AdministrativoTest {
 
     }
 
+    /**
+     * Test de la funcion actualizarCorreoEmpleado() en la clase Administrativo
+     * Se crea un concesionario, un administrativo y un empleado para la prueba
+     * Se modifica la direccion de correo electronico del empleado creado por el adminsitrativo
+     * La salida debe verificar que la direcion de correo del empleado sea la misma que se actualizo
+     */
+    @Test
+    public void testActualizarCorreoEmpleado() {
+    
+    	Concesionario consecionarioActualizacionCorreo = new Concesionario("ConcesionarioUQ-Correo", "1234567891011", "direccionDelConcesionario");
+    	
+    	try {
+			String mensaje = consecionarioActualizacionCorreo.crearAdministrativo("Cesar", "Lopez", "12345", consecionarioActualizacionCorreo, "usuario1", "contraseñaAdmin", "correo@admin.com", "11.12.03", Cargo.GERENTE);
+			System.out.println(mensaje);
+		} catch (CrearAdministrativoException e) {
+			System.out.println(e.getMessage());
+		}
+    	
+    	Administrativo adminActualizacionCorreo = consecionarioActualizacionCorreo.obtenerAdministrativo("12345");
+    	
+    	try {
+			String mensaje = adminActualizacionCorreo.crearEmpleado("Juan Jose", "Arce Aristizabal", "1092851015", "juanjarce", "123", "example@gmail.com", "11.12.04");
+			System.out.println(mensaje);
+		} catch (CrearEmpleadoException e) {
+			System.out.println(e.getMessage());
+		}
+    	
+    	
+    	String nuevaDireccionCorreo = "juanj.arcea@uqvirtual.edu.co";
+    	
+    	try {
+			String mensaje = adminActualizacionCorreo.actualizarCorreoEmpleado("1092851015", nuevaDireccionCorreo);
+			System.out.println(mensaje);
+		} catch (EmpleadoNoRegistradoException e) {
+			System.out.println(e.getMessage());
+		}
+    	
+    	Empleado empleado = consecionarioActualizacionCorreo.obtenerEmpleado("1092851015");
+    	
+    	assertEquals(nuevaDireccionCorreo, empleado.getCorreo());
+    	
+    }
 }

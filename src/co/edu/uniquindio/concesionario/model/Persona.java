@@ -1,9 +1,13 @@
 package co.edu.uniquindio.concesionario.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public abstract class Persona {
+public abstract class Persona implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
+	
+	//Atributos de la clase Persona
 	private String nombres;
 	private String apellidos;
 	private String identificacion;

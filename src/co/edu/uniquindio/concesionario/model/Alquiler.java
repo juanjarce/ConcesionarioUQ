@@ -2,6 +2,9 @@ package co.edu.uniquindio.concesionario.model;
 
 public class Alquiler extends Transaccion{
 
+	private static final long serialVersionUID = 1L;
+	
+	//Atributos de la clase Alquiler
 	private Integer consecutivoAlquiler;
 	private String fechaInicio;
 	private String fechaFinal;

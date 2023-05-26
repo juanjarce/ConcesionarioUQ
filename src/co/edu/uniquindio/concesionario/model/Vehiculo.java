@@ -1,10 +1,15 @@
 package co.edu.uniquindio.concesionario.model;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 
-public abstract class Vehiculo {
+public abstract class Vehiculo implements Serializable{
 
-	private String direccionImagen;
+	private static final long serialVersionUID = 1L;
+	
+	//Atributos de la clase Vehiculo
+	private ArrayList<String> listaImagenes;
 	private Boolean disponibleTransaccion;
 	private Boolean alquilado;
 	private String codigo;
@@ -12,8 +17,8 @@ public abstract class Vehiculo {
 	private String condicion;
 	private Integer modelo;
 	private String transmicion;
-	private String velocidadMaxima;
-	private String cilindraje;
+	private Double velocidadMaxima;
+	private Double cilindraje;
 	private Integer numeroPasajeros;
 	private Integer numeroPuertas;
 	private Double capacidadMaletero;
@@ -41,13 +46,14 @@ public abstract class Vehiculo {
 	/**
 	 * Constructor de la clase Vehiculo
 	 */
-	public Vehiculo(String direccionImagen, String codigo, String marca, String condicion, Integer modelo, String transmicion, String velocidadMaxima,
-			String cilindraje, Integer numeroPasajeros, Integer numeroPuertas, Double capacidadMaletero,
+	public Vehiculo(ArrayList<String> listaImagenes, String codigo, String marca, String condicion, Integer modelo, String transmicion, Double velocidadMaxima,
+			Double cilindraje, Integer numeroPasajeros, Integer numeroPuertas, Double capacidadMaletero,
 			boolean aireAcondicionado, boolean camaraReversa, boolean velocidadCrucero, Integer numeroBolsasDeAire,
 			boolean aBS, TipoVehiculo tipoVehiculo, CategoriaVehiculo categoriaVehiculo, Integer electrico_autonomia,
 			Integer electrico_tiempoCarga, boolean hibrido_isEnchufable, String tipoHibrido) {
 		super();
-		this.direccionImagen = direccionImagen;
+		this.listaImagenes = new ArrayList<String>();
+		this.listaImagenes.addAll(listaImagenes);
 		this.disponibleTransaccion = false;
 		this.alquilado = false;
     	this.codigo = codigo;
@@ -75,6 +81,20 @@ public abstract class Vehiculo {
 	
 	//------------------------------------------------------------------------------------------------------------------------------------------------
 
+	//------------------------------------------------------------------------------------------------------------------------------------------------
+	//Constructores para pruebas unitarias de la clase camioneta
+	
+	/**
+	 * Metodo contructor para pruebas unitarias 1 de la clase Camioneta
+	 * @param disponibleTransaccion, estadoAlquiler
+	 */
+	public Vehiculo(Boolean disponibleTransaccion, Boolean estadoAlquiler) {
+		this.disponibleTransaccion = disponibleTransaccion;
+		this.alquilado = estadoAlquiler;
+	}
+	
+	//------------------------------------------------------------------------------------------------------------------------------------------------
+
 	/**
 	 * Metodo toString de la clase Vehiculo
 	 */
@@ -94,11 +114,11 @@ public abstract class Vehiculo {
 	 * setters & getters de la clase Vehiculo
 	 * @return
 	 */
-	public String getDireccionImagen() {
-		return direccionImagen;
+	public ArrayList<String> getListaImagenes() {
+		return listaImagenes;
 	}
-	public void setDireccionImagen(String direccionImagen) {
-		this.direccionImagen = direccionImagen;
+	public void setListaImagenes(ArrayList<String> listaImagenes) {
+		this.listaImagenes = listaImagenes;
 	}
 	public String getCodigo() {
 		return codigo;
@@ -130,16 +150,16 @@ public abstract class Vehiculo {
 	public void setTransmicion(String transmicion) {
 		this.transmicion = transmicion;
 	}
-	public String getVelocidadMaxima() {
+	public Double getVelocidadMaxima() {
 		return velocidadMaxima;
 	}
-	public void setVelocidadMaxima(String velocidadMaxima) {
+	public void setVelocidadMaxima(Double velocidadMaxima) {
 		this.velocidadMaxima = velocidadMaxima;
 	}
-	public String getCilindraje() {
+	public Double getCilindraje() {
 		return cilindraje;
 	}
-	public void setCilindraje(String cilindraje) {
+	public void setCilindraje(Double cilindraje) {
 		this.cilindraje = cilindraje;
 	}
 	public Integer getNumeroPasajeros() {

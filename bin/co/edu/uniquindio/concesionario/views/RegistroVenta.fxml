@@ -3,97 +3,54 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="464.0" prefWidth="933.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.concesionario.controllers.RegistroVentaController">
-   <top>
-      <GridPane BorderPane.alignment="CENTER">
-        <columnConstraints>
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="325.0" prefWidth="536.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.concesionario.controllers.RegistroVentaController">
+   <center>
+      <Pane prefHeight="445.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Registro de Ventas" GridPane.rowIndex="1">
+            <Label layoutX="198.0" layoutY="14.0" text="Registro de Venta">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Separator prefHeight="9.0" prefWidth="735.0" />
+            <ImageView fitHeight="96.0" fitWidth="96.0" layoutX="14.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/VentaLogo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="124.0" layoutY="70.0" text="Fecha de la Transaccion:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="inputFecha" layoutX="281.0" layoutY="68.0" onAction="#getFecha" prefHeight="25.0" prefWidth="194.0" promptText="Fecha de la Transaccion" />
+            <Label layoutX="19.0" layoutY="143.0" text="Vehiculo:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="inputVehiculo" layoutX="135.0" layoutY="141.0" prefHeight="25.0" prefWidth="211.0" promptText="Ingrese el codigo del vehiculo" />
+            <Label layoutX="19.0" layoutY="183.0" text="Cliente:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="inputCliente" layoutX="134.0" layoutY="181.0" prefHeight="25.0" prefWidth="211.0" promptText="Ingrese la identificacion del cliente" />
+            <Label layoutX="19.0" layoutY="224.0" text="Total:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="inputTotal" layoutX="134.0" layoutY="221.0" prefHeight="25.0" prefWidth="211.0" promptText="Ingrese el total del alquiler" />
+            <Button layoutX="19.0" layoutY="275.0" mnemonicParsing="false" onAction="#realizarTransaccion" text="REALIZAR TRANSACCION" />
+            <Button layoutX="446.0" layoutY="275.0" mnemonicParsing="false" onAction="#volverButton" text="VOLVER" />
          </children>
-      </GridPane>
-   </top>
-   <left>
-      <Separator orientation="VERTICAL" prefHeight="425.0" prefWidth="15.0" BorderPane.alignment="CENTER" />
-   </left>
-   <center>
-      <GridPane BorderPane.alignment="CENTER">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Label text="Total:" GridPane.rowIndex="1">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label text="Fecha de la Transaccion:" GridPane.columnIndex="2" GridPane.rowIndex="1">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <TextField fx:id="inputTotal" promptText="Total de la Compra" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <DatePicker fx:id="inputFecha" onAction="#getFecha" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" onAction="#realizarTransaccion" text="REALIZAR TRANSACCION" GridPane.rowIndex="2">
-               <font>
-                  <Font size="11.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#volverButton" text="VOLVER" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-            <Label text="Vehiculo:">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label text="Cliente:" GridPane.columnIndex="2">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <TextField fx:id="inputVehiculo" promptText="Aqui el Codigo del Vehiculo" GridPane.columnIndex="1">
-               <font>
-                  <Font size="11.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="inputCliente" promptText="Aqui Identificacion del Cliente" GridPane.columnIndex="3">
-               <font>
-                  <Font size="11.0" />
-               </font>
-            </TextField>
-         </children>
-      </GridPane>
+      </Pane>
    </center>
-   <right>
-      <Separator orientation="VERTICAL" prefHeight="425.0" prefWidth="13.0" BorderPane.alignment="CENTER" />
-   </right>
-   <bottom>
-      <Separator prefHeight="15.0" prefWidth="915.0" BorderPane.alignment="CENTER" />
-   </bottom>
 </BorderPane>

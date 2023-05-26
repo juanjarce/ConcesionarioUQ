@@ -9,6 +9,7 @@ module ConcesionarioUQ {
 	requires junit;
 	requires org.junit.jupiter.api;
 	
+	opens co.edu.uniquindio.concesionario.model to javafx.base;
 	opens co.edu.uniquindio.concesionario.controllers to javafx.fxml;
 	opens co.edu.uniquindio.concesionario.application to javafx.graphics, javafx.fxml;
 }

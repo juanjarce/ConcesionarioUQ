@@ -3,10 +3,15 @@ package co.edu.uniquindio.concesionario.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import co.edu.uniquindio.concesionario.exceptions.AlquilerNoRegistradoException;
 import co.edu.uniquindio.concesionario.exceptions.ClienteNoRegistradoException;
 import co.edu.uniquindio.concesionario.exceptions.ContraseniaException;
 import co.edu.uniquindio.concesionario.exceptions.CrearClienteException;
-import co.edu.uniquindio.concesionario.exceptions.TransaccionException;
+import co.edu.uniquindio.concesionario.exceptions.EmpleadoNoRegistradoException;
+import co.edu.uniquindio.concesionario.exceptions.VehiculoAlquiladoException;
+import co.edu.uniquindio.concesionario.exceptions.VehiculoCompradoException;
+import co.edu.uniquindio.concesionario.exceptions.VehiculoNoCompradoException;
+import co.edu.uniquindio.concesionario.exceptions.VehiculoNoPasaRevisionException;
 import co.edu.uniquindio.concesionario.exceptions.VehiculoRegistradoException;
 import co.edu.uniquindio.concesionario.model.interfaces.CrearVehiculo;
 import co.edu.uniquindio.concesionario.model.interfaces.RealizarTransaccion;
@@ -14,6 +19,9 @@ import co.edu.uniquindio.concesionario.exceptions.VehiculoNoRegistradoException;
 
 public class Empleado extends Persona implements CrearVehiculo, RealizarTransaccion{
 
+	private static final long serialVersionUID = 1L;
+	
+	//Atributos y roles de la clase Empleado
 	private Concesionario concesionario;
 	private String usuario;
 	private String contrasenia;
@@ -96,7 +104,7 @@ public class Empleado extends Persona implements CrearVehiculo, RealizarTransacc
 	public Empleado(Concesionario concesionario) {
 		this.concesionario = concesionario;
 	}
-
+	
 	//------------------------------------------------------------------------------------------------------------------------------------------------
 	
 	/**
@@ -279,15 +287,15 @@ public class Empleado extends Persona implements CrearVehiculo, RealizarTransacc
 	 * Metodo para crear una moto
 	 * @throws VehiculoRegistradoException 
 	 */
-	public String crearMoto(String direccionImagen, String codigo, String marca, String condicion, Integer modelo, String transmicion, String velocidadMaxima,
-			String cilindraje, Integer numeroPasajeros, Integer numeroPuertas, Double capacidadMaletero,
+	public String crearMoto(ArrayList<String> listaImagenes, String codigo, String marca, String condicion, Integer modelo, String transmicion, Double velocidadMaxima,
+			Double cilindraje, Integer numeroPasajeros, Integer numeroPuertas, Double capacidadMaletero,
 			boolean aireAcondicionado, boolean camaraReversa, boolean velocidadCrucero, Integer numeroBolsasDeAire,
 			boolean aBS, TipoVehiculo tipoVehiculo, CategoriaVehiculo categoriaVehiculo, Integer electrico_autonomia,
 			Integer electrico_tiempoCarga, boolean hibrido_isEnchufable, String tipoHibrido) throws VehiculoRegistradoException {
 		String mensaje;
 		Vehiculo vehiculo = obtenerVehiculo(codigo);
 		if(vehiculo == null) {
-			getConcesionario().listaVehiculos.add(new Moto(direccionImagen, codigo, marca, condicion, modelo, transmicion, velocidadMaxima, cilindraje, numeroPasajeros, numeroPuertas,
+			getConcesionario().listaVehiculos.add(new Moto(listaImagenes, codigo, marca, condicion, modelo, transmicion, velocidadMaxima, cilindraje, numeroPasajeros, numeroPuertas,
 				capacidadMaletero, aireAcondicionado, camaraReversa, velocidadCrucero, numeroBolsasDeAire, aBS, tipoVehiculo,
 				categoriaVehiculo, electrico_autonomia, electrico_tiempoCarga, hibrido_isEnchufable, tipoHibrido));
 			mensaje = "El vehiculo fue creado exitosamente";
@@ -326,8 +334,8 @@ public class Empleado extends Persona implements CrearVehiculo, RealizarTransacc
 	 * @return
 	 * @throws VehiculoRegistradoException
 	 */
-	public String crearSedan(String direccionImagen, String codigo, String marca, String condicion, Integer modelo, String transmicion, String velocidadMaxima,
-			String cilindraje, Integer numeroPasajeros, Integer numeroPuertas, Double capacidadMaletero,
+	public String crearSedan(ArrayList<String> listaImagenes, String codigo, String marca, String condicion, Integer modelo, String transmicion, Double velocidadMaxima,
+			Double cilindraje, Integer numeroPasajeros, Integer numeroPuertas, Double capacidadMaletero,
 			boolean aireAcondicionado, boolean camaraReversa, boolean velocidadCrucero, Integer numeroBolsasDeAire,
 			boolean aBS, TipoVehiculo tipoVehiculo, CategoriaVehiculo categoriaVehiculo, Integer electrico_autonomia,
 			Integer electrico_tiempoCarga, boolean hibrido_isEnchufable, String tipoHibrido, boolean sensorColision, boolean sensorTraficoCruzado,
@@ -335,7 +343,7 @@ public class Empleado extends Persona implements CrearVehiculo, RealizarTransacc
 		String mensaje;
 		Vehiculo vehiculo = obtenerVehiculo(codigo);
 		if(vehiculo == null) {
-			getConcesionario().listaVehiculos.add(new Sedan(direccionImagen, codigo, marca, condicion, modelo, transmicion, velocidadMaxima, cilindraje, numeroPasajeros, numeroPuertas,
+			getConcesionario().listaVehiculos.add(new Sedan(listaImagenes, codigo, marca, condicion, modelo, transmicion, velocidadMaxima, cilindraje, numeroPasajeros, numeroPuertas,
 				capacidadMaletero, aireAcondicionado, camaraReversa, velocidadCrucero, numeroBolsasDeAire, aBS, tipoVehiculo,
 				categoriaVehiculo, electrico_autonomia, electrico_tiempoCarga, hibrido_isEnchufable, tipoHibrido, sensorColision,
 				sensorTraficoCruzado, permanenciaCarril ));
@@ -374,15 +382,15 @@ public class Empleado extends Persona implements CrearVehiculo, RealizarTransacc
 	 * @return
 	 * @throws VehiculoRegistradoException
 	 */
-	public String crearDeportivo(String direccionImagen, String codigo, String marca, String condicion, Integer modelo, String transmicion, String velocidadMaxima,
-			String cilindraje, Integer numeroPasajeros, Integer numeroPuertas, Double capacidadMaletero,
+	public String crearDeportivo(ArrayList<String> listaImagenes, String codigo, String marca, String condicion, Integer modelo, String transmicion, Double velocidadMaxima,
+			Double cilindraje, Integer numeroPasajeros, Integer numeroPuertas, Double capacidadMaletero,
 			boolean aireAcondicionado, boolean camaraReversa, boolean velocidadCrucero, Integer numeroBolsasDeAire,
 			boolean aBS, TipoVehiculo tipoVehiculo, CategoriaVehiculo categoriaVehiculo, Integer electrico_autonomia,
 			Integer electrico_tiempoCarga, boolean hibrido_isEnchufable, String tipoHibrido, Double numeroCaballosDeFuerza, Integer segundosAlcanza100) throws VehiculoRegistradoException {
 		String mensaje;
 		Vehiculo vehiculo = obtenerVehiculo(codigo);
 		if(vehiculo == null) {
-			getConcesionario().listaVehiculos.add(new Deportivo(direccionImagen, codigo, marca, condicion, modelo, transmicion, velocidadMaxima, cilindraje, numeroPasajeros, numeroPuertas,
+			getConcesionario().listaVehiculos.add(new Deportivo(listaImagenes, codigo, marca, condicion, modelo, transmicion, velocidadMaxima, cilindraje, numeroPasajeros, numeroPuertas,
 				capacidadMaletero, aireAcondicionado, camaraReversa, velocidadCrucero, numeroBolsasDeAire, aBS, tipoVehiculo,
 				categoriaVehiculo, electrico_autonomia, electrico_tiempoCarga, hibrido_isEnchufable, tipoHibrido, numeroCaballosDeFuerza, segundosAlcanza100));
 			mensaje = "El vehiculo fue creado exitosamente";
@@ -422,8 +430,8 @@ public class Empleado extends Persona implements CrearVehiculo, RealizarTransacc
 	 * @return
 	 * @throws VehiculoRegistradoException
 	 */
-	public String crearCamioneta(String direccionImagen, String codigo, String marca, String condicion, Integer modelo, String transmicion, String velocidadMaxima,
-			String cilindraje, Integer numeroPasajeros, Integer numeroPuertas, Double capacidadMaletero,
+	public String crearCamioneta(ArrayList<String> listaImagenes, String codigo, String marca, String condicion, Integer modelo, String transmicion, Double velocidadMaxima,
+			Double cilindraje, Integer numeroPasajeros, Integer numeroPuertas, Double capacidadMaletero,
 			boolean aireAcondicionado, boolean camaraReversa, boolean velocidadCrucero, Integer numeroBolsasDeAire,
 			boolean aBS, TipoVehiculo tipoVehiculo, CategoriaVehiculo categoriaVehiculo, Integer electrico_autonomia,
 			Integer electrico_tiempoCarga, boolean hibrido_isEnchufable, String tipoHibrido, boolean sensorColision, boolean sensorTraficoCruzado,
@@ -431,7 +439,7 @@ public class Empleado extends Persona implements CrearVehiculo, RealizarTransacc
 		String mensaje;
 		Vehiculo vehiculo = obtenerVehiculo(codigo);
 		if(vehiculo == null) {
-			getConcesionario().listaVehiculos.add(new Camioneta(direccionImagen, codigo, marca, condicion, modelo, transmicion, velocidadMaxima, cilindraje, numeroPasajeros, numeroPuertas,
+			getConcesionario().listaVehiculos.add(new Camioneta(listaImagenes, codigo, marca, condicion, modelo, transmicion, velocidadMaxima, cilindraje, numeroPasajeros, numeroPuertas,
 					capacidadMaletero, aireAcondicionado, camaraReversa, velocidadCrucero, numeroBolsasDeAire, aBS, tipoVehiculo,
 					categoriaVehiculo, electrico_autonomia, electrico_tiempoCarga, hibrido_isEnchufable, tipoHibrido, sensorColision,
 					sensorTraficoCruzado, permanenciaCarril, is4x4));
@@ -470,15 +478,15 @@ public class Empleado extends Persona implements CrearVehiculo, RealizarTransacc
 	 * @return
 	 * @throws VehiculoRegistradoException
 	 */
-	public String crearPickUp(String direccionImagen, String codigo, String marca, String condicion, Integer modelo, String transmicion, String velocidadMaxima,
-			String cilindraje, Integer numeroPasajeros, Integer numeroPuertas, Double capacidadMaletero,
+	public String crearPickUp(ArrayList<String> listaImagenes, String codigo, String marca, String condicion, Integer modelo, String transmicion, Double velocidadMaxima,
+			Double cilindraje, Integer numeroPasajeros, Integer numeroPuertas, Double capacidadMaletero,
 			boolean aireAcondicionado, boolean camaraReversa, boolean velocidadCrucero, Integer numeroBolsasDeAire,
 			boolean aBS, TipoVehiculo tipoVehiculo, CategoriaVehiculo categoriaVehiculo, Integer electrico_autonomia,
 			Integer electrico_tiempoCarga, boolean hibrido_isEnchufable, String tipoHibrido, boolean is4x4, Double capacidadCajaDeCargas) throws VehiculoRegistradoException {
 		String mensaje;
 		Vehiculo vehiculo = obtenerVehiculo(codigo);
 		if(vehiculo == null) {
-			getConcesionario().listaVehiculos.add(new PickUp(direccionImagen, codigo, marca, condicion, modelo, transmicion, velocidadMaxima, cilindraje, numeroPasajeros, numeroPuertas,
+			getConcesionario().listaVehiculos.add(new PickUp(listaImagenes, codigo, marca, condicion, modelo, transmicion, velocidadMaxima, cilindraje, numeroPasajeros, numeroPuertas,
 				capacidadMaletero, aireAcondicionado, camaraReversa, velocidadCrucero, numeroBolsasDeAire, aBS, tipoVehiculo,
 				categoriaVehiculo, electrico_autonomia, electrico_tiempoCarga, hibrido_isEnchufable, tipoHibrido, is4x4, capacidadCajaDeCargas));
 			mensaje = "El vehiculo fue creado exitosamente";
@@ -514,15 +522,15 @@ public class Empleado extends Persona implements CrearVehiculo, RealizarTransacc
 	 * @return
 	 * @throws VehiculoRegistradoException
 	 */
-	public String crearVan(String direccionImagen, String codigo, String marca, String condicion, Integer modelo, String transmicion, String velocidadMaxima,
-			String cilindraje, Integer numeroPasajeros, Integer numeroPuertas, Double capacidadMaletero,
+	public String crearVan(ArrayList<String> listaImagenes, String codigo, String marca, String condicion, Integer modelo, String transmicion, Double velocidadMaxima,
+			Double cilindraje, Integer numeroPasajeros, Integer numeroPuertas, Double capacidadMaletero,
 			boolean aireAcondicionado, boolean camaraReversa, boolean velocidadCrucero, Integer numeroBolsasDeAire,
 			boolean aBS, TipoVehiculo tipoVehiculo, CategoriaVehiculo categoriaVehiculo, Integer electrico_autonomia,
 			Integer electrico_tiempoCarga, boolean hibrido_isEnchufable, String tipoHibrido) throws VehiculoRegistradoException {
 		String mensaje;
 		Vehiculo vehiculo = obtenerVehiculo(codigo);
 		if(vehiculo == null) {
-			getConcesionario().listaVehiculos.add(new Van(direccionImagen, codigo, marca, condicion, modelo, transmicion, velocidadMaxima, cilindraje, numeroPasajeros, numeroPuertas,
+			getConcesionario().listaVehiculos.add(new Van(listaImagenes, codigo, marca, condicion, modelo, transmicion, velocidadMaxima, cilindraje, numeroPasajeros, numeroPuertas,
 				capacidadMaletero, aireAcondicionado, camaraReversa, velocidadCrucero, numeroBolsasDeAire, aBS, tipoVehiculo,
 				categoriaVehiculo, electrico_autonomia, electrico_tiempoCarga, hibrido_isEnchufable, tipoHibrido));
 			mensaje = "El vehiculo fue creado exitosamente";
@@ -560,15 +568,15 @@ public class Empleado extends Persona implements CrearVehiculo, RealizarTransacc
 	 * @return
 	 * @throws VehiculoRegistradoException
 	 */
-	public String crearBus(String direccionImagen, String codigo, String marca, String condicion, Integer modelo, String transmicion, String velocidadMaxima,
-			String cilindraje, Integer numeroPasajeros, Integer numeroPuertas, Double capacidadMaletero,
+	public String crearBus(ArrayList<String> listaImagenes, String codigo, String marca, String condicion, Integer modelo, String transmicion, Double velocidadMaxima,
+			Double cilindraje, Integer numeroPasajeros, Integer numeroPuertas, Double capacidadMaletero,
 			boolean aireAcondicionado, boolean camaraReversa, boolean velocidadCrucero, Integer numeroBolsasDeAire,
 			boolean aBS, TipoVehiculo tipoVehiculo, CategoriaVehiculo categoriaVehiculo, Integer electrico_autonomia,
 			Integer electrico_tiempoCarga, boolean hibrido_isEnchufable, String tipoHibrido, Integer numeroEjes, Integer numeroSalidasEmergencia) throws VehiculoRegistradoException {
 		String mensaje;
 		Vehiculo vehiculo = obtenerVehiculo(codigo);
 		if(vehiculo == null) {
-			getConcesionario().listaVehiculos.add(new Bus(direccionImagen, codigo, marca, condicion, modelo, transmicion, velocidadMaxima, cilindraje, numeroPasajeros, numeroPuertas,
+			getConcesionario().listaVehiculos.add(new Bus(listaImagenes, codigo, marca, condicion, modelo, transmicion, velocidadMaxima, cilindraje, numeroPasajeros, numeroPuertas,
 				capacidadMaletero, aireAcondicionado, camaraReversa, velocidadCrucero, numeroBolsasDeAire, aBS, tipoVehiculo,
 				categoriaVehiculo, electrico_autonomia, electrico_tiempoCarga, hibrido_isEnchufable, tipoHibrido, numeroEjes, numeroSalidasEmergencia));
 			mensaje = "El vehiculo fue creado exitosamente";
@@ -607,17 +615,18 @@ public class Empleado extends Persona implements CrearVehiculo, RealizarTransacc
 	 * @return
 	 * @throws VehiculoRegistradoException
 	 */
-	public String crearCamion(String direccionImagen, String codigo, String marca, String condicion, Integer modelo, String transmicion, String velocidadMaxima,
-			String cilindraje, Integer numeroPasajeros, Integer numeroPuertas, Double capacidadMaletero,
+	public String crearCamion(ArrayList<String> listaImagenes, String codigo, String marca, String condicion, Integer modelo, String transmicion, Double velocidadMaxima,
+			Double cilindraje, Integer numeroPasajeros, Integer numeroPuertas, Double capacidadMaletero,
 			boolean aireAcondicionado, boolean camaraReversa, boolean velocidadCrucero, Integer numeroBolsasDeAire,
 			boolean aBS, TipoVehiculo tipoVehiculo, CategoriaVehiculo categoriaVehiculo, Integer electrico_autonomia,
-			Integer electrico_tiempoCarga, boolean hibrido_isEnchufable, String tipoHibrido, Double capacidadCarga, Integer numeroEjes, Integer numeroSalidasEmergencia) throws VehiculoRegistradoException {
+			Integer electrico_tiempoCarga, boolean hibrido_isEnchufable, String tipoHibrido, Double capacidadCarga, Integer numeroEjes, Integer numeroSalidasEmergencia,
+			boolean frenosAire, TipoCamion tipoCamion) throws VehiculoRegistradoException {
 		String mensaje;
 		Vehiculo vehiculo = obtenerVehiculo(codigo);
 		if(vehiculo == null) {
-			getConcesionario().listaVehiculos.add(new Camion(direccionImagen, codigo, marca, condicion, modelo, transmicion, velocidadMaxima, cilindraje, numeroPasajeros, numeroPuertas,
+			getConcesionario().listaVehiculos.add(new Camion(listaImagenes, codigo, marca, condicion, modelo, transmicion, velocidadMaxima, cilindraje, numeroPasajeros, numeroPuertas,
 					capacidadMaletero, aireAcondicionado, camaraReversa, velocidadCrucero, numeroBolsasDeAire, aBS, tipoVehiculo,
-					categoriaVehiculo, electrico_autonomia, electrico_tiempoCarga, hibrido_isEnchufable, tipoHibrido, capacidadCarga, numeroEjes, numeroSalidasEmergencia));
+					categoriaVehiculo, electrico_autonomia, electrico_tiempoCarga, hibrido_isEnchufable, tipoHibrido, capacidadCarga, numeroEjes, numeroSalidasEmergencia, frenosAire, tipoCamion));
 			mensaje = "El vehiculo fue creado exitosamente";
 		}
 		else {
@@ -655,10 +664,10 @@ public class Empleado extends Persona implements CrearVehiculo, RealizarTransacc
 	 * @param fecha
 	 * @param consecutivo
 	 * @return
-	 * @throws TransaccionException
+	 * @throws ClienteNoRegistradoException, EmpleadoNoRegistradoException, VehiculoAlquiladoException, VehiculoNoCompradoException, VehiculoNoRegistradoException
 	 */
 	public String venderVehiculo(Double total, Vehiculo vehiculo, Empleado empleadoTransaccion, Cliente clienteTransaccion,
-			String fecha) throws TransaccionException {
+			String fecha) throws ClienteNoRegistradoException, EmpleadoNoRegistradoException, VehiculoAlquiladoException, VehiculoNoCompradoException, VehiculoNoRegistradoException {
 		String mensaje;
 		if(vehiculo != null) {
 			if(vehiculo.getDisponibleTransaccion() == true) {
@@ -675,23 +684,23 @@ public class Empleado extends Persona implements CrearVehiculo, RealizarTransacc
 							getConcesionario().añadirVentaConsecutivo();
 						}
 						else {
-							throw new TransaccionException("El cliente de la transaccion no se encuentra registrado");
+							throw new ClienteNoRegistradoException();
 						}
 					}
 					else {
-						throw new TransaccionException("El empleado de la transaccion no se encuentra registrado");
+						throw new EmpleadoNoRegistradoException();
 					}
 				}
 				else {
-					throw new TransaccionException("El vehiculo se encuentra alquilado");
+					throw new VehiculoAlquiladoException();
 				}
 			}
 			else {
-				throw new TransaccionException("El vehiculo no se ha comprado");
+				throw new VehiculoNoCompradoException();
 			}
 		}
 		else {
-			throw new TransaccionException("El vehiculo a vender no se encuentra registrado");
+			throw new VehiculoNoRegistradoException();
 		}
 		return mensaje;
 	}
@@ -706,11 +715,12 @@ public class Empleado extends Persona implements CrearVehiculo, RealizarTransacc
 	 * @param consecutivo
 	 * @return
 	 * @throws TransaccionException
+	 * @throws VehiculoNoPasaRevisionException, ClienteNoRegistradoException, EmpleadoNoRegistradoException, VehiculoCompradoException, VehiculoNoRegistradoException
 	 */
 	public String comprarVehiculo(Double total, Vehiculo vehiculo, Empleado empleadoTransaccion, Cliente clienteTransaccion,
-			String fecha, String pasaRevision) throws TransaccionException {
+			String fecha, String pasaRevision) throws VehiculoNoPasaRevisionException, ClienteNoRegistradoException, EmpleadoNoRegistradoException, VehiculoCompradoException, VehiculoNoRegistradoException {
 		String mensaje;
-		if(pasaRevision.equals("NO")) throw new TransaccionException("El vehiculo no paso la revision");
+		if(pasaRevision.equals("NO")) throw new VehiculoNoPasaRevisionException();
 		if(vehiculo != null) {
 			if(vehiculo.getDisponibleTransaccion()==false) {
 				if(empleadoTransaccion != null) {
@@ -725,19 +735,19 @@ public class Empleado extends Persona implements CrearVehiculo, RealizarTransacc
 						getConcesionario().añadirCompraConsecutivo();
 					}
 					else {
-						throw new TransaccionException("El cliente de la transaccion no se encuentra registrado");
+						throw new ClienteNoRegistradoException();
 					}
 				}
 				else {
-					throw new TransaccionException("El empleado de la transaccion no se encuentra registrado");
+					throw new EmpleadoNoRegistradoException();
 				}
 			}
 			else {
-				throw new TransaccionException("El vehiculo ya se compró");
+				throw new VehiculoCompradoException();
 			}
 		}
 		else {
-			throw new TransaccionException("El vehiculo a comprar no se encuentra registrado");
+			throw new VehiculoNoRegistradoException();
 		}
 		return mensaje;
 	}
@@ -752,10 +762,10 @@ public class Empleado extends Persona implements CrearVehiculo, RealizarTransacc
 	 * @param fechaInicio
 	 * @param fechaFinal
 	 * @return
-	 * @throws TransaccionException
+	 * @throws ClienteNoRegistradoException, EmpleadoNoRegistradoException, VehiculoAlquiladoException, VehiculoNoCompradoException, VehiculoNoRegistradoException 
 	 */
 	public String AlquilarVehiculo(Double total, Vehiculo vehiculo, Empleado empleadoTransaccion, Cliente clienteTransaccion,
-			String fechaTransaccion, String fechaInicio, String fechaFinal) throws TransaccionException {
+			String fechaTransaccion, String fechaInicio, String fechaFinal) throws ClienteNoRegistradoException, EmpleadoNoRegistradoException, VehiculoAlquiladoException, VehiculoNoCompradoException, VehiculoNoRegistradoException {
 		String mensaje;
 		if(vehiculo != null) {
 			if(vehiculo.getDisponibleTransaccion() == true) {
@@ -772,23 +782,23 @@ public class Empleado extends Persona implements CrearVehiculo, RealizarTransacc
 							getConcesionario().añadirAlquilerConsecutivo();
 						}
 						else {
-							throw new TransaccionException("El cliente de la transaccion no se encuentra registrado");
+							throw new ClienteNoRegistradoException();
 						}
 					}
 					else {
-						throw new TransaccionException("El empleado de la transaccion no se encuentra registrado");
+						throw new EmpleadoNoRegistradoException();
 					}
 				}
 				else {
-					throw new TransaccionException("El vehiculo se encuentra alquilado");
+					throw new VehiculoAlquiladoException();
 				}
 			}
 			else {
-				throw new TransaccionException("El vehiculo no se ha comprado");
+				throw new VehiculoNoCompradoException();
 			}
 		}
 		else {
-			throw new TransaccionException("El vehiculo a alquilar no se encuentra registrado");
+			throw new VehiculoNoRegistradoException();
 		}
 		return mensaje;
 	}
@@ -816,9 +826,9 @@ public class Empleado extends Persona implements CrearVehiculo, RealizarTransacc
 	 * Metodo para cambiar el estado de alquiler de un vehiculo en la transaccion tipo alquiler
 	 * @param consecutivoAlquiler
 	 * @return
-	 * @throws TransaccionException
+	 * @throws AlquilerNoRegistradoException
 	 */
-	public String devolverVehiculoAlquiler(int consecutivoAlquiler) throws TransaccionException {
+	public String devolverVehiculoAlquiler(int consecutivoAlquiler) throws AlquilerNoRegistradoException {
 		String mensaje;
 		Alquiler alquiler = obtenerAlquiler(consecutivoAlquiler);
 		if(alquiler != null) {
@@ -831,7 +841,7 @@ public class Empleado extends Persona implements CrearVehiculo, RealizarTransacc
 			}
 		}
 		else {
-			throw new TransaccionException("El alquiler no se encuentra registrado");
+			throw new AlquilerNoRegistradoException();
 		}
 		return mensaje;
 	}
@@ -850,15 +860,15 @@ public class Empleado extends Persona implements CrearVehiculo, RealizarTransacc
 	 * Metodo para obtener las transacciones de un empleado enviado como parametro
 	 * @param identificacion
 	 * @return
-	 * @throws ClienteNoRegistradoException
+	 * @throws EmpleadoNoRegistradoException
 	 */
-	public List<Transaccion> obtenerResgitroTransaccionesDeUnEmpleado(String identificacion) throws ClienteNoRegistradoException{
+	public List<Transaccion> obtenerResgitroTransaccionesDeUnEmpleado(String identificacion) throws EmpleadoNoRegistradoException{
 		Empleado empleado = getConcesionario().obtenerEmpleado(identificacion);
 		if(empleado != null) {
 			return empleado.getListaTransacciones();
 		}
 		else {
-			throw new ClienteNoRegistradoException();
+			throw new EmpleadoNoRegistradoException();
 		}
 	}
 }

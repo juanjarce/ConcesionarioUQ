@@ -1,7 +1,12 @@
 package co.edu.uniquindio.concesionario.model;
 
+import java.util.ArrayList;
+
 public class Camioneta extends Vehiculo {
 
+	private static final long serialVersionUID = 1L;
+	
+	//Atributos de la clase Camioneta
 	private boolean sensorColision;
 	private boolean sensorTraficoCruzado;
 	private boolean permanenciaCarril;
@@ -34,13 +39,13 @@ public class Camioneta extends Vehiculo {
 	 * @param abs
 	 * @param categoriaVehiculo
 	 */
-	public Camioneta(String direccionImagen, String codigo, String marca, String condicion, Integer modelo, String transmicion, String velocidadMaxima,
-			String cilindraje, Integer numeroPasajeros, Integer numeroPuertas, Double capacidadMaletero,
+	public Camioneta(ArrayList<String> listaImagenes, String codigo, String marca, String condicion, Integer modelo, String transmicion, Double velocidadMaxima,
+			Double cilindraje, Integer numeroPasajeros, Integer numeroPuertas, Double capacidadMaletero,
 			boolean aireAcondicionado, boolean camaraReversa, boolean velocidadCrucero, Integer numeroBolsasDeAire,
 			boolean aBS, TipoVehiculo tipoVehiculo, CategoriaVehiculo categoriaVehiculo, Integer electrico_autonomia,
 			Integer electrico_tiempoCarga, boolean hibrido_isEnchufable, String tipoHibrido, boolean sensorColision, boolean sensorTraficoCruzado,
 			boolean permanenciaCarril, boolean is4x4) {
-		super(direccionImagen, codigo, marca, condicion, modelo, transmicion, velocidadMaxima, cilindraje, numeroPasajeros, numeroPuertas,
+		super(listaImagenes, codigo, marca, condicion, modelo, transmicion, velocidadMaxima, cilindraje, numeroPasajeros, numeroPuertas,
 				capacidadMaletero, aireAcondicionado, camaraReversa, velocidadCrucero, numeroBolsasDeAire, aBS, tipoVehiculo,
 				categoriaVehiculo, electrico_autonomia, electrico_tiempoCarga, hibrido_isEnchufable, tipoHibrido);
 		// TODO Auto-generated constructor stub
@@ -52,6 +57,19 @@ public class Camioneta extends Vehiculo {
 
 	}
 
+	//------------------------------------------------------------------------------------------------------------------------------------------------
+	
+	//------------------------------------------------------------------------------------------------------------------------------------------------
+	//Constructores para pruebas unitarias de la clase camioneta
+	
+	/**
+	 * Metodo contructor para pruebas unitarias 1 de la clase Camioneta
+	 * @param disponibleTransaccion, estadoAlquiler
+	 */
+	public Camioneta(Boolean disponibleTransaccion, Boolean estadoAlquiler) {
+		super(disponibleTransaccion, estadoAlquiler);
+	}
+	
 	//------------------------------------------------------------------------------------------------------------------------------------------------
 
 	/**

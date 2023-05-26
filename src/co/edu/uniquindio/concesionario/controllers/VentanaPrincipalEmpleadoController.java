@@ -2,8 +2,6 @@ package co.edu.uniquindio.concesionario.controllers;
 
 import java.io.IOException;
 
-import co.edu.uniquindio.concesionario.model.Concesionario;
-import co.edu.uniquindio.concesionario.model.Empleado;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,8 +13,7 @@ public class VentanaPrincipalEmpleadoController {
 
 	private LoginController loginController;
 	private Stage stage;
-	private Concesionario miConcesionario;
-	private Empleado miEmpleado;
+	
     @FXML
     void alquilarVehiculo(ActionEvent event) throws IOException {
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/concesionario/views/RegistroAlquiler.fxml"));
@@ -25,7 +22,7 @@ public class VentanaPrincipalEmpleadoController {
     	Scene scene = new Scene(root);
     	Stage stage = new Stage();
     	stage.setScene(scene);
-    	controller.initDesdeEmpleado(miConcesionario, miEmpleado, stage, this);
+    	controller.initDesdeEmpleado(stage, this);
     	stage.show();
     	this.stage.close();
     }
@@ -44,14 +41,14 @@ public class VentanaPrincipalEmpleadoController {
     	Scene scene = new Scene(root);
     	Stage stage = new Stage();
     	stage.setScene(scene);
-    	controller.initDesdeEmpleado(miConcesionario, miEmpleado, stage, this);
+    	controller.initDesdeEmpleado(stage, this);
     	stage.show();
     	this.stage.close();
     }
 
     @FXML
     void mostrarReportesDeNegocio(ActionEvent event) {
-    	TablaReporteDeNegocios newFrame = new TablaReporteDeNegocios(miEmpleado);
+    	TablaReporteDeNegocios newFrame = new TablaReporteDeNegocios(ModelFactoryController.getInstance().getMiEmpleado());
     	newFrame.setVisible(true);
     }
 
@@ -63,7 +60,7 @@ public class VentanaPrincipalEmpleadoController {
     	Scene scene = new Scene(root);
     	Stage stage = new Stage();
     	stage.setScene(scene);
-    	controller.initDesdeEmpleado(miConcesionario, miEmpleado, stage, this);
+    	controller.initDesdeEmpleado(stage, this);
     	stage.show();
     	this.stage.close();
     }
@@ -76,7 +73,7 @@ public class VentanaPrincipalEmpleadoController {
     	Scene scene = new Scene(root);
     	Stage stage = new Stage();
     	stage.setScene(scene);
-    	controller.initDesdeEmpleado(miConcesionario, miEmpleado, stage, this);
+    	controller.initDesdeEmpleado(stage, this);
     	stage.show();
     	this.stage.close();
     }
@@ -89,18 +86,15 @@ public class VentanaPrincipalEmpleadoController {
     	Scene scene = new Scene(root);
     	Stage stage = new Stage();
     	stage.setScene(scene);
-    	controller.initDesdeEmpleado(miConcesionario, miEmpleado, stage, this);
+    	controller.initDesdeEmpleado(stage, this);
     	stage.show();
     	this.stage.close();
     }
 
-	public void init(Concesionario miConcesionario, Empleado miEmpleado, Stage stage,
-			LoginController loginController) {
+	public void init(Stage stage, LoginController loginController) {
 		// TODO Auto-generated method stub
 		this.loginController = loginController;
 		this.stage = stage;
-		this.miConcesionario = miConcesionario;
-		this.miEmpleado = miEmpleado;
 	}
 
 	public void show() {

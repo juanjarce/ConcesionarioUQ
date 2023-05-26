@@ -2,6 +2,8 @@ package co.edu.uniquindio.concesionario.model;
 
 public class Venta extends Transaccion {
 	
+	private static final long serialVersionUID = 1L;
+	//Atributos de la clase Venta
 	private Integer consecutivoVenta;
 
 	//------------------------------------------------------------------------------------------------------------------------------------------------

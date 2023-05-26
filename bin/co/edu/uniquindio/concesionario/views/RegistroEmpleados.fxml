@@ -4,79 +4,76 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.concesionario.controllers.RegistroEmpleadosController">
-   <center>
-      <BorderPane prefHeight="464.0" prefWidth="506.0" BorderPane.alignment="CENTER">
-         <top>
-            <Label text="Registro de Empleados" textAlignment="CENTER" BorderPane.alignment="CENTER">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
-         </top>
-         <center>
-            <GridPane BorderPane.alignment="CENTER">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
+<AnchorPane prefHeight="626.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.concesionario.controllers.RegistroEmpleadosController">
+   <children>
+      <Label layoutX="305.0" layoutY="14.0" text="Gestion de Empleados">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Separator layoutX="67.0" layoutY="42.0" prefHeight="5.0" prefWidth="632.0" />
+      <SplitPane dividerPositions="0.5" layoutX="47.0" layoutY="63.0" orientation="VERTICAL" prefHeight="518.0" prefWidth="671.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="190.0" prefWidth="412.0">
                <children>
-                  <Label alignment="TOP_LEFT" contentDisplay="CENTER" text="Nombres:" />
-                  <Label text="Apellidos:" GridPane.rowIndex="1" />
-                  <Label text="Identificacion:" GridPane.rowIndex="2" />
-                  <Label text="Usuario:" GridPane.rowIndex="3" />
-                  <Label text="Contraseña:" GridPane.rowIndex="4" />
-                  <Label text="Correo:" GridPane.rowIndex="5" />
-                  <Label text="Respuesta Pregunta de Seguridad:" GridPane.rowIndex="6" />
-                  <Button mnemonicParsing="false" onAction="#crearEmpleado" text="CREAR EMPLEADO" GridPane.rowIndex="7" />
-                  <Button mnemonicParsing="false" onAction="#modificarEmpleado" text="MODIFICAR EMPLEADO" GridPane.rowIndex="8" />
-                  <Button mnemonicParsing="false" onAction="#eliminarEmpleado" text="ELIMINAR EMPLEADO" GridPane.rowIndex="9" />
-                  <Button mnemonicParsing="false" onAction="#buscarEmpleado" text="BUSCAR EMPLEADO" GridPane.rowIndex="10" />
-                  <Button mnemonicParsing="false" onAction="#cambiarEstadoEmpleado" text="CAMBIAR ESTADO EMPLEADO" GridPane.rowIndex="11" />
-                  <TextField fx:id="inputNombres" GridPane.columnIndex="1" />
-                  <TextField fx:id="inputApellidos" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField fx:id="inputIdentificacion" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField fx:id="inputUsuario" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <PasswordField fx:id="inputContrasenia" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <TextField fx:id="inputCorreo" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <TextField fx:id="inputRespuestaSeguridad" promptText="fecha nacimiento (formato dd.mm.aa)" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                  <Button mnemonicParsing="false" onAction="#volverButton" text="VOLVER" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                  <Label layoutX="9.0" layoutY="8.0" text="Informacion del Empleado">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Separator layoutX="14.0" layoutY="32.0" prefHeight="5.0" prefWidth="642.0" />
+                  <Label layoutX="9.0" layoutY="46.0" text="Nombres :" />
+                  <Label layoutX="9.0" layoutY="80.0" text="Apellidos :" />
+                  <Label layoutX="9.0" layoutY="114.0" text="Identificacion:" />
+                  <TextField fx:id="inputNombres" layoutX="88.0" layoutY="42.0" prefHeight="25.0" prefWidth="231.0" promptText="Ingrese los nombres del empleado" />
+                  <TextField fx:id="inputApellidos" layoutX="88.0" layoutY="76.0" prefHeight="25.0" prefWidth="231.0" promptText="Ingrese los apellidos del empleado" />
+                  <TextField fx:id="inputIdentificacion" layoutX="88.0" layoutY="110.0" prefHeight="25.0" prefWidth="231.0" promptText="Ingrese la identificacion del empleado" />
+                  <Separator layoutX="14.0" layoutY="173.0" prefHeight="5.0" prefWidth="642.0" />
+                  <Button fx:id="btnNuevo" layoutX="149.0" layoutY="186.0" mnemonicParsing="false" onAction="#nuevoEmpleadoEvent" prefHeight="25.0" prefWidth="109.0" text="NUEVO" />
+                  <Button fx:id="btnAgregar" layoutX="410.0" layoutY="186.0" mnemonicParsing="false" onAction="#agregarEmpleadoEvent" prefHeight="25.0" prefWidth="133.0" text="AGREGAR" />
+                  <Button fx:id="btnActualizar" layoutX="277.0" layoutY="186.0" mnemonicParsing="false" onAction="#actualizarEmpleadoEvent" prefHeight="25.0" prefWidth="116.0" text="ACTUALIZAR" />
+                  <Label layoutX="333.0" layoutY="46.0" text="Usuario:" />
+                  <Label layoutX="332.0" layoutY="80.0" text="Contraseña:" />
+                  <Label layoutX="332.0" layoutY="114.0" text="Correo:" />
+                  <TextField fx:id="inputUsuario" layoutX="417.0" layoutY="42.0" prefHeight="25.0" prefWidth="241.0" promptText="Ingrese el usuario del empleado" />
+                  <PasswordField fx:id="inputContrasenia" layoutX="417.0" layoutY="76.0" prefHeight="25.0" prefWidth="241.0" promptText="Ingrese la contraseña del empleado" />
+                  <TextField fx:id="inputCorreo" layoutX="417.0" layoutY="110.0" prefHeight="25.0" prefWidth="241.0" promptText="Ingrese el correo electronico del empleado" />
+                  <Button fx:id="btnBuscar" layoutX="149.0" layoutY="218.0" mnemonicParsing="false" onAction="#buscarEmpleadoEvent" prefHeight="25.0" prefWidth="109.0" text="BUSCAR" />
+                  <Button fx:id="btnCambiarEstado" layoutX="277.0" layoutY="218.0" mnemonicParsing="false" onAction="#cambiarEstadoEmpleadoEvent" prefHeight="25.0" prefWidth="116.0" text="CAMBIAR ESTADO" />
+                  <Button fx:id="btnActualizarCorreo" layoutX="410.0" layoutY="218.0" mnemonicParsing="false" onAction="#actualizarCorreoEmpleadoEvent" text="ACTUALIZAR CORREO" />
+                  <Label layoutX="9.0" layoutY="146.0" text="Respuesta Pregunta de Seguridad:" />
+                  <TextField fx:id="inputRespuestaSeguridad" layoutX="204.0" layoutY="142.0" prefHeight="25.0" prefWidth="454.0" promptText="Fecha nacimiento (formato dd.mm.aa)" />
                </children>
-            </GridPane>
-         </center>
-      </BorderPane>
-   </center>
-   <left>
-      <Separator orientation="VERTICAL" prefHeight="464.0" prefWidth="16.0" BorderPane.alignment="CENTER" />
-   </left>
-   <top>
-      <Separator prefHeight="11.0" prefWidth="522.0" BorderPane.alignment="CENTER" />
-   </top>
-   <right>
-      <Separator orientation="VERTICAL" prefHeight="464.0" prefWidth="16.0" BorderPane.alignment="CENTER" />
-   </right>
-   <bottom>
-      <Separator prefHeight="15.0" prefWidth="538.0" BorderPane.alignment="CENTER" />
-   </bottom>
-</BorderPane>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="201.0" prefWidth="412.0">
+               <children>
+                  <Label layoutX="13.0" layoutY="9.0" text="Listado de Empleados">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Separator layoutX="17.0" layoutY="33.0" prefHeight="5.0" prefWidth="642.0" />
+                  <TableView fx:id="tableEmpleados" layoutX="14.0" layoutY="41.0" onMouseClicked="#seleccionarEmpleadoEvent" prefHeight="179.0" prefWidth="642.0">
+                    <columns>
+                      <TableColumn fx:id="columnNombres" prefWidth="88.0" text="Nombres" />
+                        <TableColumn fx:id="columnApellidos" prefWidth="93.0" text="Apellidos" />
+                      <TableColumn fx:id="columnIdentificacion" prefWidth="145.0" text="Identificacion" />
+                        <TableColumn fx:id="columnCorreo" prefWidth="201.0" text="Correo Electronico" />
+                        <TableColumn fx:id="columnUsuario" minWidth="5.0" prefWidth="114.0" text="Usuario" />
+                    </columns>
+                  </TableView>
+                  <Button fx:id="btnEliminar" layoutX="554.0" layoutY="225.0" mnemonicParsing="false" onAction="#eliminarEmpleadoEvent" prefHeight="25.0" prefWidth="101.0" text="Eliminar" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+      <Button fx:id="btnVolver" layoutX="689.0" layoutY="591.0" mnemonicParsing="false" onAction="#volverEvent" text="VOLVER" />
+   </children>
+</AnchorPane>
